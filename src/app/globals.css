@@ -33,6 +33,7 @@
     --ring: 240 10% 3.9%;
 
     --radius: 0.5rem;
+    --gray: #d9d9d9;
   }
 
   .dark {
@@ -63,6 +64,7 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+    --gray: #d9d9d9;
   }
 }
 
@@ -78,6 +80,9 @@
   }
   h3 {
     @apply text-[39px] leading-[120%];
+  }
+  h5 {
+    @apply text-[25px] leading-[120%];
   }
   h6 {
     @apply text-lg leading-[120%];

@@ -1,9 +1,32 @@
+'use client';
+
 import { Button, Container } from '@/components';
 import FeatureCard from '@/components/features/card';
 import Image from 'next/image';
 import data from '../data/home';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import TestimonialIndicator from '@/components/testimonial/Indicator';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on('select', () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
   return (
     <Container>
       {/* Landing */}
@@ -28,6 +51,14 @@ export default function Home() {
       {/* Features */}
       <section className='min-h-screen flex items-center py-20'>
         <div className='flex flex-col space-y-8 items-center'>
+          <div className='space-y-3 flex flex-col items-center'>
+            <p>Quality</p>
+            <h3>Discover Our Stylish and Reliable Watches</h3>
+            <h6 className='lg:max-w-[780px] text-center'>
+              Our watches combine style and durability, with features like water resistance and a variety of styles to choose from. Plus, they come
+              with a warranty for peace of mind.
+            </h6>
+          </div>
           <div className='flex justify-between flex-row'>
             {data.features.map((x, index) => {
               return <FeatureCard key={index} img={x.img} title={x.title} description={x.description} />;
@@ -39,6 +70,37 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <section className='min-h-[60%] flex flex-col justify-center items-center py-20'>
+        <div className='flex-col flex space-y-16'>
+          <Carousel setApi={setApi} className='w-[768px] max-w-full'>
+            <CarouselContent>
+              {data.testimonial.map((x, index) => (
+                <CarouselItem className='w-[768px]' key={index}>
+                  <div key={index} className='flex space-y-9 flex-col min-w-[768px] items-center'>
+                    <h5 className='font-medium text-center'>{x.review}</h5>
+                    <div className='space-y-2 flex flex-col items-center'>
+                      <Avatar className='w-16 h-16'>
+                        <AvatarImage src='https://avatars.githubusercontent.com/u/75017829?v=4' alt={`testimonial_${index}`} />
+                        <AvatarFallback>TM</AvatarFallback>
+                      </Avatar>
+                      <h5 className='text-center'>{x.name}</h5>
+                      <p>{x.role}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+
+          <TestimonialIndicator setActiveIndex={setCurrent} data={data.testimonial} activeIndex={current - 1} />
+        </div>
+      </section>
+
+      <section className='min-h-screen flex items-center py-20'></section>
     </Container>
   );
 }
