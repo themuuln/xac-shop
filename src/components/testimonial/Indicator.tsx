@@ -9,7 +9,7 @@ type TestimonialIndicatorProps = {
 const TestimonialIndicator = ({ data, activeIndex, setActiveIndex }: TestimonialIndicatorProps) => {
   return (
     <div className='flex justify-center space-x-2'>
-      {data?.map((x, index) => {
+      {data?.map((_, index) => {
         return (
           <div
             onClick={() => {
