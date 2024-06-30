@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
@@ -26,9 +27,18 @@ const headerData = [
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-10 flex flex-row bg-background/50 backdrop-blur md:justify-between">
+    <header className="container sticky top-0 z-10 flex flex-row items-center bg-background/50 backdrop-blur md:justify-between">
       {/* Logo */}
-      <div></div>
+      <Link href={'/'}>
+        <div className="p-4">
+          <Image
+            alt="header-logo"
+            src={'/assets/logo/logo.png'}
+            width={48}
+            height={48}
+          />
+        </div>
+      </Link>
       <div className="flex space-x-3 py-5 ">
         {headerData.map((x, index) => {
           return (
