@@ -1,9 +1,5 @@
 {
-  // Configuration for JavaScript files
-  "extends": [
-    "next/core-web-vitals", // Needed to avoid warning in next.js build: 'The Next.js plugin was not detected in your ESLint configuration'
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -11,10 +7,10 @@
         "singleQuote": true,
         "endOfLine": "auto"
       }
-    ] // Avoid conflict rule between Prettier and Airbnb Eslint
+    ]
   },
+  "ignorePatterns": ["node_modules"],
   "overrides": [
-    // Configuration for TypeScript files
     {
       "files": ["**/*.ts", "**/*.tsx", "**/*.mts"],
       "plugins": ["@typescript-eslint", "unused-imports", "tailwindcss", "simple-import-sort"],
@@ -30,7 +26,7 @@
             "singleQuote": true,
             "endOfLine": "auto"
           }
-        ], // Avoid conflict rule between Prettier and Airbnb Eslint
+        ],
         "import/extensions": "off", // Avoid missing file extension errors, TypeScript already provides a similar feature
         "react/function-component-definition": "off", // Disable Airbnb's specific function type
         "react/destructuring-assignment": "off", // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
@@ -45,14 +41,9 @@
         "import/order": "off", // Avoid conflict rule between `eslint-plugin-import` and `eslint-plugin-simple-import-sort`
         "@typescript-eslint/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
+        "react/no-array-index-key": "off",
         "unused-imports/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
       }
-    },
-    // Configuration for testing
-    {
-      "files": ["**/*.test.ts", "**/*.test.tsx"],
-      "plugins": ["vitest", "jest-formatting", "testing-library", "jest-dom"],
-      "extends": ["plugin:vitest/recommended", "plugin:jest-formatting/recommended", "plugin:testing-library/react", "plugin:jest-dom/recommended"]
     }
   ]
 }

@@ -81,6 +81,9 @@
   h3 {
     @apply text-[39px] leading-[120%];
   }
+  h4 {
+    @apply text-[31px] leading-[120%];
+  }
   h5 {
     @apply text-[25px] leading-[120%];
   }

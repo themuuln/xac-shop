@@ -1,0 +1,53 @@
+export default [
+  {
+    name: 'Rolex Submariner',
+    model: 16610,
+    condition: 'New',
+    gender: 'Men',
+    movement: 'Automatic',
+    case: 'Steel',
+    _id: 0,
+    price: 298880,
+    currency: 'MNT',
+    image: '/assets/watches/Submariner-16610-Black-Tritium-Dial-SKU165493.avif',
+  },
+  {
+    name: 'Rolex GMT-Master II',
+    model: 126710,
+    condition: 'New',
+    gender: 'Men',
+    movement: 'Automatic',
+    case: 'Steel',
+    _id: 0,
+    price: 298880,
+    currency: 'MNT',
+    image:
+      '/assets/watches/GMT-Master-II-126710-Black-Chromalight-Dial-SKU165741.avif',
+  },
+  {
+    name: 'Rolex GMT-Master II',
+    model: 126710,
+    condition: 'New',
+    gender: 'Men',
+    movement: 'Automatic',
+    case: 'Steel',
+    _id: 0,
+    price: 298880,
+    currency: 'MNT',
+    image:
+      '/assets/watches/GMT-Master-II-126710-Black-Chromalight-Dial-SKU165634.avif',
+  },
+  {
+    name: 'Rolex Submariner & 18k Yellow Gold',
+    model: 126613,
+    condition: 'New',
+    gender: 'Men',
+    movement: 'Automatic',
+    case: 'Stainless Steel',
+    _id: 0,
+    price: 298880,
+    currency: 'MNT',
+    image:
+      '/assets/watches/Submariner-126613-Blue-Dial-Blue-Bezel-SKU164267.avif',
+  },
+];
